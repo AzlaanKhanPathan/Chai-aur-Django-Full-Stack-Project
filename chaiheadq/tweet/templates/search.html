@@ -1,0 +1,14 @@
+{% comment %} {% extends "tweet_list.html" %} {% endcomment %}
+<form method="get" action="{%url 'search'%}">
+    {{form.query}}
+    <button type="submit">Search</button>
+</form>
+{% if results %}
+    <ul>
+        {% for item in results %}
+            <li>{{ item.name }}</li>
+        {% endfor %}
+    </ul>
+{% elif form.is_bound %}
+    <p>No results found.</p>
+{% endif %}
